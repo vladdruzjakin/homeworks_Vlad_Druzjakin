@@ -88,15 +88,30 @@ function deleteTodoFromStorage(id) {
 }
 
 function editTaskStorage(id, title, text) {
-  for (var i = 0; i <= storage.todos.length; i++) {
-    if (storage.todos[i].id === id){
-     storage.todos[i].title = title;
-     storage.todos[i].text = text;
-    return console.log(storage.todos)
-     }
-    }  
-}
+    if (!id) return console.log('Введите id');
+    if (!title) return console.log('Введите заголовок задачи');
+    if (!text) return console.log('Введите текст задачи');
 
+    let editedTask = storage.todos.find((item) => item.id === id)
+
+    editedTask.title = title
+    editedTask.text = text
+
+    return editedTask
+}
+  // for (var i = 0; i <= storage.todos.length; i++) {
+    
+  //   if (storage.todos[i].id === id){
+
+  //    storage.todos[i].title = title;
+
+  //    storage.todos[i].text = text;
+
+  //   return storage.todos
+
+  //    }
+
+  //   }  
 // эти строки лучше выполнять в консоли браузера, когда вы сможете 
 // из массива storage.todos взять уникальный id тасочки 
 // editTaskStorage('some id', 'new title', 'new text')
