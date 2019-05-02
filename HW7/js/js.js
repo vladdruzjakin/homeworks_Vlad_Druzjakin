@@ -1,69 +1,91 @@
 const   /*1*/
-        domPtext = document.querySelector('p').textContent,
+        domPText = document.querySelector('p').textContent,
         /*2*/
-        funcNodeTypetagNameChildrenLength = (knotHouse) =>{
-            const nodeTypeInfo = knotHouse.nodeType,
-                  tagNameInfo = knotHouse.tagName,
-                  childrenLength = knotHouse.children.length;
-            let objInfo ={nodeTypeInfo, tagNameInfo, childrenLength};
-            return  objInfo;
+        getTagInfo = (tag) =>{
+            const nodeTypeInfo = tag.nodeType,
+                  tagNameInfo = tag.tagName,
+                  childrenLength = tag.children.length;
+            return  {nodeTypeInfo, tagNameInfo, childrenLength};
         },
         /*3,7*/
         listOfLinks = document.querySelectorAll('li'),
         newListLi = [],
         /*4*/
-        title = document.querySelector('p');
+        ElementP = document.querySelector('p');
         /*5,6*/
-        getElementUl = document.querySelector('ul'),
+        ElementUl = document.querySelector('ul'),
         /*8*/
-        getElementAllLinks = document.querySelectorAll('a');
+        ElementAllLinks = document.querySelectorAll('a');
 
 /*3*/
 
-for (let index = 0; index < listOfLinks.length; index++) {
-    const element = listOfLinks[index].textContent;
+// for (let index = 0; index < listOfLinks.length; index++) {
+//     const element = listOfLinks[index].textContent;
+//     newListLi.push(element)
+// }
+
+listOfLinks.forEach((item)=>{
+    const element = item.textContent;
     newListLi.push(element)
-}
+})
 
 /*4 */
 
 //1 вариант
-// title.firstChild.data = '-text-';
-// title.firstChild.nextSibling.nextSibling.data = '-text-';
-// title.lastChild.data = '-text-';
+// ElementP.firstChild.data = '-text-';
+// ElementP.firstChild.nextSibling.nextSibling.data = '-text-';
+// ElementP.lastChild.data = '-text-';
 
 //2 вариант
-const newChild = document.querySelector('p').childNodes
-    for (let i = 0; i < newChild.length; i++) {
-        if (newChild[i].nodeType === 3) {
-            newChild[i].textContent = '-text-';
-        }
-}
+// const newChild = document.querySelector('p').childNodes
+//     for (let i = 0; i < newChild.length; i++) {
+//         if (newChild[i].nodeType === 3) {
+//             newChild[i].textContent = '-text-';
+//         }
+// }
 
+const newChild = document.querySelector('p').childNodes
+newChild.forEach((item)=>{
+    if (item.nodeType === 3) {
+        item.textContent = '-text-';
+    }
+})
 
 /*5*/
 
-getElementUl.classList.add('list');
+ElementUl.classList.add('list');
 
-/*6 костыли*/
+/*6 */
 
-getElementUl.nextElementSibling.nextElementSibling.id = 'link';
+const nextElementUl = document.querySelector('ul~a');
+      nextElementUl.id = 'link';
 
 /*7*/
 
-for (let index = 0; index < listOfLinks.length; index++) {
+// for (let index = 0; index < listOfLinks.length; index++) {
+//     if (index % 2 === 0 ){
+//         listOfLinks[index].classList.add('item');
+//     }
+// }
+
+listOfLinks.forEach((item, index)=>{
     if (index % 2 === 0 ){
-        listOfLinks[index].classList.add('item');
-    }
-}
+        item.classList.add('item');
+    }  
+})
+
 /*8*/
 
-for (let index = 0; index < getElementAllLinks.length; index++) {
-    getElementAllLinks[index].classList.add('custom-link');
-}
+// for (let index = 0; index < ElementAllLinks.length; index++) {
+//     ElementAllLinks[index].classList.add('custom-link');
+// }
+ElementAllLinks.forEach((item)=>{
+    item.classList.add('custom-link');
+})
+
 
 /*9*/
-
+//не переделывал на forEach. Потому что здесь я указал количество создаваемых линков 
 const fragment = document.createDocumentFragment(),
       newsul = document.querySelector('ul'),
       numbChildrenUl = newsul.children.length;
@@ -82,8 +104,10 @@ newsul.appendChild(fragment)
 const linksAll = document.links;
 for (let link of linksAll) {
 	if (link.parentNode.tagName === 'LI') {
-        const strong = document.createElement('strong');
-        link.insertAdjacentElement('afterbegin', strong);
+        const textLi = link.textContent;
+        link.innerHTML='';
+        link.insertAdjacentHTML('afterbegin', `<strong>${textLi}</strong>`);
+        
 	}
 }
 
@@ -103,11 +127,24 @@ const markEl = document.querySelector('mark');
 
 /*13*/
 
+// let allLiArray = Array.from(document.querySelectorAll('li')),
+//     reverseSortedLi = allLiArray.sort((prev, next) => -1),
+//     fragmentReversLi = document.createDocumentFragment();
+
+
+// for (let index = 0; index < reverseSortedLi.length; index++) {
+//     fragmentReversLi.appendChild(reverseSortedLi[index])
+// }
+
+// newsul.appendChild(fragmentReversLi)
+
 let allLiArray = Array.from(document.querySelectorAll('li')),
-    reverseSortedLi = allLiArray.sort((prev, next) => -1);
+    reverseSortedLi = allLiArray.sort((prev, next) => -1),
+    fragmentReversLi = document.createDocumentFragment();
 
+    reverseSortedLi.forEach((element)=>{
+        fragmentReversLi.appendChild(element)
+    }) 
 
-for (let index = 0; index < reverseSortedLi.length; index++) {
-    newsul.appendChild(reverseSortedLi[index])
-}
+newsul.appendChild(fragmentReversLi)
 
