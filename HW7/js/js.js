@@ -87,17 +87,18 @@ ElementAllLinks.forEach((item)=>{
 /*9*/
 //не переделывал на forEach. Потому что здесь я указал количество создаваемых линков 
 const fragment = document.createDocumentFragment(),
-      newsul = document.querySelector('ul'),
+      newsUl = document.querySelector('ul'),
       numbChildrenUl = newsul.children.length;
 
 for (let index = 1; index <= 2; index++) {
     const newLi = document.createElement('li')
     newLi.classList.add('new-item')
-    fragment.appendChild(newLi)
     newLi.textContent =`link ${numbChildrenUl + index}`
+    fragment.appendChild(newLi)
+    
 }
 
-newsul.appendChild(fragment)
+newsUl.appendChild(fragment)
 
 /*10*/
 
