@@ -34,9 +34,9 @@ const elementUl = document.querySelector('ul'),
       btnGenerate = document.querySelector('#btn-generate');
 
 btnGenerate.addEventListener('click', ()=>{
-    const createLi = document.createElement('li'),
-          elementUlLength = elementUl.children.length;
-    createLi.textContent = `Item ${elementUlLength + 1}`;
+    const createLi = document.createElement('li');
+    let   elementUlLength = elementUl.children.length;
+    createLi.textContent = `Item ${++elementUlLength}`;
     elementUl.appendChild(createLi);
 })
 
