@@ -8,7 +8,7 @@ let menuElem = document.querySelector('.menu');
 
 menuElem.addEventListener('click', ({target}) =>{
     const li = target.tagName === 'LI' ? target : target.closest('li'),
-          childLi = li.querySelector('div');
+          childLi = li.querySelector('.dropdown-menu');
         
         if(childLi){
             childLi.classList.toggle('d-none')
@@ -18,9 +18,6 @@ menuElem.addEventListener('click', ({target}) =>{
     menuElemDiv.forEach((item) => {
         if(item !== childLi){
             item.classList.add('d-none')
-        }else{
-            return
         }
-        
     });
 })
