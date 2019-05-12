@@ -21,7 +21,7 @@ function restFuncThreeVariant ([first, ...other]) {
 const organisation = {
     name: 'Google',
     info: { employees: ['Vlad', 'Olga'], partners: ['Microsoft', 'Facebook', 'Xing'] }
-   };
+};
    
 function getInfo({name = 'Unknown',info:{partners:[comp1,comp2]}}){
     return `Name: ${name} Partners: ${comp1} ${comp2}`
@@ -37,17 +37,18 @@ let sum = (...item) => {
 /*4*/
 
 const rectangle = {
-                    width: 4,
-                    height: 4, 
-                    getSquare: function () {return parseInt(this.width * this.height)}};
+    width: 4,
+    height: 4, 
+    getSquare: function () {return parseInt(this.width * this.height)}
+};
 /*5*/
 
 const price = {
-                price: 10,
-                discount: '15%',
-                getPrcie:function (){return this.price},
-                getPriceWithDiscount: function () {return ( parseInt(this.price) * ((100 - parseInt(this.discount)) * 0.01))}
-              };
+    price: 10,
+    discount: '15%',
+    getPrcie:function (){return this.price},
+    getPriceWithDiscount: function () {return ( parseInt(this.price) * ((100 - parseInt(this.discount)) * 0.01))}
+};
 /*6*/
 
 const ObjectHeight = {
@@ -67,7 +68,7 @@ const numerator = {
     minusOne: function () {
         --this.value
         return this},
-   };
+};
    
 /*8*/
 
@@ -75,15 +76,15 @@ const numberOfProducts = {
     retailPrice: 50,
     numberOfGoods: 2,
     totalCost: function () {
-        return (this.retailPrice * this.numberOfGoods)
+    return (this.retailPrice * this.numberOfGoods)
     }
-}
+};
 /*9*/
 
 const numberOfProductsTwo = {
     retailPrice: 60,
     numberOfGoods: 5,
-}
+};
 
 numberOfProducts.totalCost.call(numberOfProductsTwo)
 
@@ -99,7 +100,7 @@ getSquare.call(sizes)
 let element = {
     height: 25,
     getHeight: function () {return this.height;}
-   };
+};
    let getElementHeight = element.getHeight.bind(element);
    getElementHeight();
    
