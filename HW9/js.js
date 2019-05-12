@@ -8,11 +8,11 @@ function restFuncFirstVariant (arr) {
 }
 
 function restFuncTwoVariant () { 
-    const [ first, ...other ] = arguments;
+    const [ first, ...other ] = arguments[0];
     return {first,other}
 }
 
-function restFuncThreeVariant ( first, ...other ) { 
+function restFuncThreeVariant ([first, ...other]) { 
     return {first,other}
 }
 
@@ -36,9 +36,10 @@ let sum = (...item) => {
 }
 /*4*/
 
-const rectangle = {width:4,
-                   height:4, 
-                   getSquare: function () {return parseInt(this.width * this.height)}};
+const rectangle = {
+                    width: 4,
+                    height: 4, 
+                    getSquare: function () {return parseInt(this.width * this.height)}};
 /*5*/
 
 const price = {
