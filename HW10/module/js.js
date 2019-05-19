@@ -44,9 +44,8 @@ const multiply = multiplyMaker(2);
 
 const workString = (function () {
     let element;
-
     function installString(string =''){
-        element = string;
+        element = typeof string === 'number' ? string.toString() : string;
     }
     function getString(){
         return element
@@ -80,50 +79,38 @@ const workString = (function () {
 const CalcMethod = (function (){
     let result; 
 
-    function setValue(val){
-        if (!val || typeof (val) !== 'number'){
-            return console.log('function setValue value non-valid!')
+    function checkOnNumber (val){
+        if (typeof (val) === 'number'){
+            return val
         }
-        result = val
+        return val = 0;
+    }
+    function setValue(val){
+        result = checkOnNumber(val)
         return this
     }
     function plus(val){
-        if (!val || typeof (val) !== 'number'){
-            return console.log('function plus value non-valid!')
-        }
-        result += val
-        return this 
+        result += checkOnNumber(val)
+        return this
     }
     function mult(val){
-        if (!val || typeof (val) !== 'number'){
-            return console.log('function mult value non-valid!')
-        }
-        result *= val
+        result *= checkOnNumber(val)
         return this 
     }
     function minus(val){
-        if (!val || typeof (val) !== 'number'){
-            return console.log('function minus value non-valid!')
-        }
-       result -= val
-       return this 
-    }
-    function divis(val){
-        if (!val || typeof (val) !== 'number'){
-            return console.log('function divis value non-valid!')
-        }
-        result /= val
+        result -= checkOnNumber(val)
         return this 
     }
+    function divis(val){
+        result /= checkOnNumber(val)
+        return this
+    }
     function exponent(val){
-        if (!val || typeof (val) !== 'number'){
-            return console.log('function exponent value non-valid!')
-        }
-        result = Math.pow(result, val)
+        result = Math.pow(result, checkOnNumber(val))
         return this
     }
     function getResult(){
-        result = result.toFixed(2);
+        result = +result.toFixed(2);
         return result
     }
     return{
@@ -133,6 +120,7 @@ const CalcMethod = (function (){
         minus,
         divis,
         exponent,
-        getResult
+        getResult,
+        checkOnNumber
     }
 })();
