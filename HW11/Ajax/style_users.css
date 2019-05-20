@@ -1,0 +1,26 @@
+#add-users{
+    color: rgb(0, 0, 0);
+    background-color: rgb(119, 119, 119);
+    height:20px;
+    width: 100px;
+}
+#users-list{
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+#users-list p {
+
+    position: relative;
+}
+.new{
+color:black; 
+}
+.second{
+    color: white;
+    position: absolute;
+    background-color:black;
+    z-index: 2;
+}
+.d-none {
+    display: none;
+}
