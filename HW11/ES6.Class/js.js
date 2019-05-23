@@ -9,8 +9,8 @@
 
 // const comp = new Component('span');
 
-class Component{
-    constructor(tagName = 'div'){
+class Component {
+    constructor(tagName = 'div') {
         this.tagName = tagName;
         this.node = document.createElement(tagName);
     }
@@ -29,13 +29,13 @@ console.log(comp)
 //   this.node.textContent = text;
 // };
 
-class ComponentMethod{
-    constructor(tagName = 'div'){
+class ComponentMethod {
+    constructor(tagName = 'div') {
         this.tagName = tagName;
         this.node = document.createElement(tagName);
     }
     setText(text = 'Text') {
-       this.node.textContent = text;
+        this.node.textContent = text;
     }
 }
 const compMethod = new ComponentMethod('p');
@@ -47,44 +47,35 @@ console.log(compMethod)
 // Также у него должны быть геттер и сеттер для получения и установки текущего числа с которым производятся вычисления.
 
 
-class Calc{
-    constructor(number = 0){
-        this.number =number;
+class Calc {
+    constructor() {
+        this.number = 0;
     }
-    plus(val){
-        if (typeof (val) === 'number'){
-            this.number += val
-            return this 
-        }
+    checkOnNumber(val) {
+        return val = typeof (val) === 'number' ? val : val = 0;
     }
-    mult(val){
-        if (typeof (val) === 'number'){
-            this.number *= val
-            return this  
-        }
+    plus(val) {
+        this.number += this.checkOnNumber(val);
+        return this
     }
-    minus(val){
-        if ( typeof (val) === 'number'){
-            this.number -= val
-            return this  
-        }
+    mult(val) {
+        this.number *= this.checkOnNumber(val);
+        return this
     }
-    divis(val){
-        if ( typeof (val) === 'number'){
-            this.number /= val
-            return this     
-        }
+    minus(val) {
+        this.number -= this.checkOnNumber(val);
+        return this
+    }
+    division(val) {
+        this.number /= this.checkOnNumber(val);
+        return this
     }
     get numberValue() {
         return this.number;
     }
-    set numberValue(newValue) {
-        if (typeof newValue === 'number') {
-            this.number = newValue;
-        }
+    set numberValue(val) {
+        this.number = this.checkOnNumber(val);
+        return this
     }
 }
 const calcResult = new Calc();
-
-
-
