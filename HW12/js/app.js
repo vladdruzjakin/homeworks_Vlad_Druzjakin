@@ -33,32 +33,33 @@ function onSelectChange() {
         articles
     }) => {
         loaderUI.removeLoader()
-        if(articles.length !== 0){
+        if (articles.length !== 0) {
             notificationUI.removeNotificationUI()
             newsUI.addNewsToView(articles)
-        }else{
+        } else {
             notificationUI.setNotificationUI()
-        }  
+        }
     }, country, category)
 }
-function onSearchInput(){
+
+function onSearchInput() {
     const search = searchInput.value,
-          searchLength = search.length;
-    if( searchLength >= 3){
+        searchLength = search.length;
+    if (searchLength >= 3) {
         loaderUI.setLoader()
         newsService.getNewsBySearch(({
             articles
         }) => {
             loaderUI.removeLoader()
-            if(articles.length !== 0){
+            if (articles.length !== 0) {
                 notificationUI.removeNotificationUI()
                 newsUI.addNewsToView(articles)
-            }else{
+            } else {
                 notificationUI.setNotificationUI()
             }
         }, search)
-    }else{
+    } else {
         newsUI.container.innerHTML = ''
-        return console.log('Поиск пустой') 
+        return console.log('Поиск пустой')
     }
 }

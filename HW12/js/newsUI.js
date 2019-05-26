@@ -4,21 +4,21 @@
 // класс сейчас заточен на работу в '.news-wrap .row' елементе
 // но можно реализовать как в ./loaderUI.js 
 class NewsUI {
-    constructor() {
-        this.container = document.querySelector('.news-wrap .row')
-    }
+  constructor() {
+    this.container = document.querySelector('.news-wrap .row')
+  }
 
-    addNewsToView(list) {
-        const template = list.reduce((init, item) => init += NewsUI.getTemplate(item), '')
+  addNewsToView(list) {
+    const template = list.reduce((init, item) => init += NewsUI.getTemplate(item), '')
 
-        this.container.insertAdjacentHTML('afterbegin', template)
-    }
+    this.container.insertAdjacentHTML('afterbegin', template)
+  }
 
-    static getTemplate(article) {
-      if(article.urlToImage === null || article.title === null || article.description === null){
-        return ''
-      }else{
-        return `
+  static getTemplate(article) {
+    if (article.urlToImage === null || article.title === null || article.description === null) {
+      return ''
+    } else {
+      return `
         <div class="row">
           <div class="col s12 m6">
             <div class="card">
@@ -33,6 +33,6 @@ class NewsUI {
           </div>
         </div>
         `
-      }
     }
+  }
 }
