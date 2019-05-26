@@ -19,7 +19,7 @@ const searchInput = form['search'];
 // Event listeners -- собираем все addEventListener в обну стопку, чтобы потом не искать их по коду
 countrySelect.addEventListener('change', onSelectChange)
 categorySelect.addEventListener('change', onSelectChange)
-searchInput.addEventListener('keydown', onSelectKeydown)
+searchInput.addEventListener('keydown', onSearchInput)
 
 // Handlers for events -- пишем функции-обработчики, которые нужны для addEventListener
 function onSelectChange() {
@@ -41,10 +41,10 @@ function onSelectChange() {
         }  
     }, country, category)
 }
-function onSelectKeydown(){
+function onSearchInput(){
     const search = searchInput.value,
           searchLength = search.length;
-    if( searchLength > 3 || searchLength === 3){
+    if( searchLength >= 3){
         loaderUI.setLoader()
         newsService.getNewsBySearch(({
             articles
@@ -61,6 +61,4 @@ function onSelectKeydown(){
         newsUI.container.innerHTML = ''
         return console.log('Поиск пустой') 
     }
-    
-
 }
