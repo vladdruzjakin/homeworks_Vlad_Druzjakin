@@ -55,10 +55,11 @@ class VideoPlayerBasic {
         this.video.addEventListener('dblclick', (e) => this.dblclick(e))
     }
     dblclick = (e) => {
-        if (e.clientX > 600) {
-            this.video.currentTime += 2;
+        const halfWidth = this.video.offsetWidth / 2;
+        if (e.offsetX > halfWidth) {
+            this.video.currentTime += +this.settings.next;
         } else {
-            this.video.currentTime -= 2;
+            this.video.currentTime -= -this.settings.prev;
         }
     }
 
@@ -108,8 +109,8 @@ class VideoPlayerBasic {
             <button class="player__button toggle" title="Toggle Play">►</button>
             <input type="range" name="volume" class="player__slider_volume" min=0 max="1" step="0.05" value="${volume}">
             <input type="range" name="playbackRate" class="player__slider_playbackRate" min="0.5" max="2" step="0.1" value="1">
-            <button data-skip="${prev}" class="player__button skip">« 1s</button>
-            <button data-skip="${next}" class="player__button skip">1s »</button>
+            <button data-skip="${prev}" class="player__button skip">« ${prev}s</button>
+            <button data-skip="${next}" class="player__button skip">${next}s »</button>
             </div>
         </div>
         `
