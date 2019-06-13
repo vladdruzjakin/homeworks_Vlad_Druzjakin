@@ -4,8 +4,8 @@ import {
 import {
     NewsService
 } from './../services/news.service';
-export class NewsComponent { 
-    constructor(){
+export class NewsComponent {
+    constructor() {
         this._authService = new AuthService();
         this._newsService = new NewsService();
 
@@ -16,11 +16,11 @@ export class NewsComponent {
         this._userImg = {}
     }
 
-    async beforeRender(){
+    async beforeRender() {
         this._userImg = await this._newsService.getNews(this._authUserToken)
     }
-    render(){
-        let template ='';
+    render() {
+        let template = '';
 
         this._userImg.news.forEach(element => {
             template += `

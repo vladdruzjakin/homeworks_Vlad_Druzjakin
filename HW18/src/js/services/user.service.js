@@ -1,5 +1,9 @@
-import { Http } from './../core/http.service';
-import { ENV } from './../config/env';
+import {
+    Http
+} from './../core/http.service';
+import {
+    ENV
+} from './../config/env';
 
 export class UserService {
     getUser(id) {
