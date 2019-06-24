@@ -21,7 +21,7 @@ export class NewsComponent {
     }
     render() {
         let template = '';
-
+        console.log(this._userImg)
         this._userImg.news.forEach(element => {
             template += `
                 <div class="card mx-auto mt-3 mb-3" style="width: 30rem;">

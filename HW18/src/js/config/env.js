@@ -1,4 +1,4 @@
 export const ENV = {
     mode: 'dev',
-    apiUrl: 'https://mostlikedperson-api.herokuapp.com/api'
+    apiUrl: 'https://mlp-demo.herokuapp.com/api'
 }
